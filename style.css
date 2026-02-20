@@ -135,5 +135,35 @@ body {
 .metallic-text {
     background: linear-gradient(135deg, #ffffff 0%, #c0c0c0 50%, #808080 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+/* Premium Silver Divider */
+.silver-divider {
+    height: 1px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background: linear-gradient(90deg,
+            rgba(192, 192, 192, 0) 0%,
+            rgba(192, 192, 192, 0.5) 20%,
+            rgba(192, 192, 192, 1) 50%,
+            rgba(192, 192, 192, 0.5) 80%,
+            rgba(192, 192, 192, 0) 100%);
+    position: relative;
+    opacity: 0.4;
+}
+
+.silver-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 2px;
+    background: white;
+    filter: blur(4px);
+    opacity: 0.6;
 }
