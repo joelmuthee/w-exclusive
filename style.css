@@ -183,3 +183,39 @@ body {
     filter: blur(4px);
     opacity: 0.6;
 }
+
+/* Mobile Footer Centering */
+@media (max-width: 1023px) {
+    footer .grid {
+        text-align: center;
+    }
+
+    footer .grid>div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer .grid>div p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    footer .grid>div .flex.gap-4 {
+        justify-content: center;
+    }
+
+    /* Keep the contact and hours content centered as a block but text-aligned appropriately if needed */
+    footer .grid>div .font-sans {
+        width: 100%;
+        max-width: 350px;
+        text-align: center;
+    }
+
+    /* Exceptions for flex rows in Hours */
+    footer .grid>div .flex.justify-between {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
