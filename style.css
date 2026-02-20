@@ -218,4 +218,14 @@ body {
         display: flex;
         justify-content: space-between;
     }
+
+    footer .flex.gap-4 a {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    footer .flex.gap-4 i {
+        backface-visibility: hidden;
+        -webkit-font-smoothing: antialiased;
+    }
 }
