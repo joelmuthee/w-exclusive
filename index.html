@@ -258,6 +258,125 @@
 
         <div class="silver-divider"></div>
 
+        <!-- Luxury BMI Calculator -->
+        <section class="py-32 px-6 lg:px-20 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <div class="reveal-up">
+                    <h2 class="font-serif text-4xl md:text-5xl mb-6">Calculate Your <span class="text-accent">BMI</span>
+                    </h2>
+                    <p class="font-sans text-softGray font-light text-lg mb-10 max-w-lg">
+                        Understanding your Body Mass Index is the first step towards a tailored fitness regime. Use our
+                        elite calculator to benchmarks your current status.
+                    </p>
+
+                    <div
+                        class="bg-white/5 border border-white/10 p-8 md:p-12 backdrop-blur-xl relative overflow-hidden group">
+                        <!-- Unit Toggle -->
+                        <div class="flex gap-8 mb-10">
+                            <label class="flex items-center gap-3 cursor-pointer group/radio">
+                                <input type="radio" name="units" value="metric" checked class="hidden"
+                                    onchange="toggleUnits()">
+                                <div
+                                    class="w-5 h-5 border border-accent flex items-center justify-center rounded-full transition-all group-hover/radio:border-white">
+                                    <div class="w-2 h-2 bg-accent rounded-full scale-0 transition-transform dot"></div>
+                                </div>
+                                <span class="text-xs uppercase tracking-widest font-bold">Metric Units</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group/radio">
+                                <input type="radio" name="units" value="imperial" class="hidden"
+                                    onchange="toggleUnits()">
+                                <div
+                                    class="w-5 h-5 border border-white/20 flex items-center justify-center rounded-full transition-all group-hover/radio:border-accent">
+                                    <div class="w-2 h-2 bg-accent rounded-full scale-0 transition-transform dot"></div>
+                                </div>
+                                <span class="text-xs uppercase tracking-widest font-bold text-white/50">Imperial
+                                    Units</span>
+                            </label>
+                        </div>
+
+                        <!-- Form Fields -->
+                        <div class="space-y-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="metricInputs">
+                                <div class="flex flex-col gap-3">
+                                    <label class="text-[10px] text-accent tracking-[0.2em] font-bold uppercase">Weight
+                                        (kg)</label>
+                                    <input type="number" id="weightMetric" placeholder="70"
+                                        class="bg-white/5 border border-white/10 px-6 py-4 text-sm font-medium focus:outline-none focus:border-accent transition-all text-white">
+                                </div>
+                                <div class="flex flex-col gap-3">
+                                    <label class="text-[10px] text-accent tracking-[0.2em] font-bold uppercase">Height
+                                        (cm)</label>
+                                    <input type="number" id="heightMetric" placeholder="175"
+                                        class="bg-white/5 border border-white/10 px-6 py-4 text-sm font-medium focus:outline-none focus:border-accent transition-all text-white">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-6 hidden" id="imperialInputs">
+                                <div class="flex flex-col gap-3">
+                                    <label
+                                        class="text-[10px] text-accent tracking-[0.2em] font-bold uppercase">Lbs</label>
+                                    <input type="number" id="weightImperial" placeholder="154"
+                                        class="bg-white/5 border border-white/10 px-4 py-4 text-sm font-medium focus:outline-none focus:border-accent transition-all text-white">
+                                </div>
+                                <div class="flex flex-col gap-3">
+                                    <label
+                                        class="text-[10px] text-accent tracking-[0.2em] font-bold uppercase">Ft</label>
+                                    <input type="number" id="heightFt" placeholder="5"
+                                        class="bg-white/5 border border-white/10 px-4 py-4 text-sm font-medium focus:outline-none focus:border-accent transition-all text-white">
+                                </div>
+                                <div class="flex flex-col gap-3">
+                                    <label
+                                        class="text-[10px] text-accent tracking-[0.2em] font-bold uppercase">In</label>
+                                    <input type="number" id="heightIn" placeholder="9"
+                                        class="bg-white/5 border border-white/10 px-4 py-4 text-sm font-medium focus:outline-none focus:border-accent transition-all text-white">
+                                </div>
+                            </div>
+
+                            <button onclick="calculateBMI()"
+                                class="w-full bg-accent hover:bg-white text-black py-5 font-bold text-sm transition-all duration-500 shadow-xl group/btn overflow-hidden relative">
+                                <span class="relative z-10 uppercase tracking-[0.2em]">Calculate BMI</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results & Chart -->
+                <div class="reveal-up" style="transition-delay: 200ms;">
+                    <div id="bmiResultCard" class="bg-accent p-12 mb-12 hidden">
+                        <h4 class="text-black font-serif text-lg uppercase tracking-widest mb-2">Your BMI Result</h4>
+                        <div class="text-black font-serif text-6xl mb-6" id="bmiValue">00.0</div>
+                        <p class="text-black/80 font-sans text-sm uppercase tracking-widest font-bold" id="bmiCategory">
+                            Calculating...</p>
+                    </div>
+
+                    <div class="bg-white/[0.03] border border-white/10 p-8 md:p-12 backdrop-blur-md">
+                        <h4 class="font-serif text-xl mb-8 uppercase tracking-widest border-b border-white/10 pb-4">
+                            Weight Status Chart</h4>
+                        <div class="space-y-4 font-sans text-sm">
+                            <div class="flex justify-between pb-3 border-b border-white/5">
+                                <span class="text-softGray">Below 18.5</span>
+                                <span class="font-bold">Underweight</span>
+                            </div>
+                            <div class="flex justify-between pb-3 border-b border-white/5 text-accent">
+                                <span>18.5 - 24.9</span>
+                                <span class="font-bold">Normal Weight</span>
+                            </div>
+                            <div class="flex justify-between pb-3 border-b border-white/5">
+                                <span class="text-softGray">25.0 - 29.9</span>
+                                <span class="font-bold">Overweight</span>
+                            </div>
+                            <div class="flex justify-between pb-3 border-b border-white/5">
+                                <span class="text-softGray">30.0 and Above</span>
+                                <span class="font-bold text-brandRed">Obese</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="silver-divider"></div>
+
         <!-- Social Proof Section -->
         <section class="py-32 bg-white/[0.02] border-y border-white/5 reveal-up">
             <div class="max-w-6xl mx-auto px-6">
@@ -748,6 +867,84 @@
         document.querySelectorAll('.reveal-up').forEach((el) => {
             revealObserver.observe(el);
         });
+
+        // BMI Logic
+        function toggleUnits() {
+            const units = document.querySelector('input[name="units"]:checked').value;
+            const metricDiv = document.getElementById('metricInputs');
+            const imperialDiv = document.getElementById('imperialInputs');
+            const radios = document.querySelectorAll('input[name="units"]');
+
+            radios.forEach(r => {
+                const label = r.closest('label');
+                const dot = label.querySelector('.dot');
+                const circle = label.querySelector('div');
+                const text = label.querySelector('span');
+
+                if (r.checked) {
+                    dot.style.transform = 'scale(1)';
+                    circle.style.borderColor = 'var(--accent)';
+                    text.style.color = 'white';
+                    text.style.opacity = '1';
+                } else {
+                    dot.style.transform = 'scale(0)';
+                    circle.style.borderColor = 'rgba(255,255,255,0.2)';
+                    text.style.color = 'rgba(255,255,255,0.5)';
+                }
+            });
+
+            if (units === 'metric') {
+                metricDiv.classList.remove('hidden');
+                imperialDiv.classList.add('hidden');
+            } else {
+                metricDiv.classList.add('hidden');
+                imperialDiv.classList.remove('hidden');
+            }
+        }
+
+        function calculateBMI() {
+            const units = document.querySelector('input[name="units"]:checked').value;
+            let bmi = 0;
+
+            if (units === 'metric') {
+                const w = parseFloat(document.getElementById('weightMetric').value);
+                const h = parseFloat(document.getElementById('heightMetric').value) / 100;
+                if (w > 0 && h > 0) bmi = w / (h * h);
+            } else {
+                const w = parseFloat(document.getElementById('weightImperial').value);
+                const ft = parseFloat(document.getElementById('heightFt').value) || 0;
+                const inch = parseFloat(document.getElementById('heightIn').value) || 0;
+                const h = (ft * 12) + inch;
+                if (w > 0 && h > 0) bmi = (w / (h * h)) * 703;
+            }
+
+            if (bmi > 0) {
+                const resultCard = document.getElementById('bmiResultCard');
+                const bmiVal = document.getElementById('bmiValue');
+                const bmiCat = document.getElementById('bmiCategory');
+
+                resultCard.classList.remove('hidden');
+                bmiVal.innerText = bmi.toFixed(1);
+
+                let category = "";
+                if (bmi < 18.5) category = "Underweight";
+                else if (bmi < 25) category = "Normal Weight";
+                else if (bmi < 30) category = "Overweight";
+                else category = "Obese";
+
+                bmiCat.innerText = category;
+
+                // Scroll to result on mobile
+                if (window.innerWidth < 768) {
+                    resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            } else {
+                alert("Please enter valid weight and height values.");
+            }
+        }
+
+        // Initialize UI
+        toggleUnits();
     </script>
 </body>
 
