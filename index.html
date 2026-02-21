@@ -265,17 +265,20 @@
                     Wellness</span>
                 <h2 class="font-serif text-4xl md:text-5xl mb-6">The Wellness <span class="text-accent">Suite</span>
                 </h2>
-                <div class="flex justify-center gap-4 md:gap-8 mt-10">
-                    <button onclick="switchSuiteTab('bmi')" id="tab-bmi" class="suite-tab active">
-                        The Baseline
-                        <span class="block text-[9px] uppercase tracking-widest opacity-50 font-sans mt-1">BMI
-                            Calculator</span>
-                    </button>
-                    <button onclick="switchSuiteTab('recovery')" id="tab-recovery" class="suite-tab">
-                        The Protocol
-                        <span class="block text-[9px] uppercase tracking-widest opacity-50 font-sans mt-1">Recovery
-                            Generator</span>
-                    </button>
+                <div class="flex justify-center mt-10">
+                    <div class="suite-tabs-container">
+                        <button onclick="switchSuiteTab('bmi')" id="tab-bmi" class="suite-tab active">
+                            The Baseline
+                            <span class="block text-[8px] uppercase tracking-widest opacity-50 font-sans mt-0.5">BMI
+                                Calculator</span>
+                        </button>
+                        <button onclick="switchSuiteTab('recovery')" id="tab-recovery" class="suite-tab">
+                            The Protocol
+                            <span
+                                class="block text-[8px] uppercase tracking-widest opacity-50 font-sans mt-0.5">Recovery
+                                Generator</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 

@@ -184,6 +184,50 @@ body {
     opacity: 0.6;
 }
 
+/* Interactive Wellness Suite Styles */
+.suite-tabs-container {
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px;
+    border-radius: 100px;
+    backdrop-filter: blur(10px);
+}
+
+.suite-tab {
+    padding: 0.8rem 2.5rem;
+    background: transparent;
+    border: none;
+    border-radius: 100px;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.suite-tab:hover:not(.active) {
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.suite-tab.active {
+    background: white;
+    color: black;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.suite-tab.active span {
+    color: black;
+    opacity: 0.6;
+}
+
+.int-btn.active {
+    border-color: var(--accent) !important;
+    background: rgba(192, 192, 192, 0.1);
+    color: var(--accent);
+}
+
 /* Mobile Footer Centering */
 @media (max-width: 1023px) {
     footer .grid {
