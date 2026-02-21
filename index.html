@@ -258,90 +258,157 @@
 
         <div class="silver-divider"></div>
 
-        <!-- Luxury BMI Calculator -->
+        <!-- W Wellness Suite -->
         <section class="py-32 px-6 lg:px-20 max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-                <div class="reveal-up">
-                    <h2 class="font-serif text-4xl md:text-5xl mb-6">Calculate Your <span class="text-accent">BMI</span>
-                    </h2>
-                    <p class="font-sans text-softGray font-light text-lg mb-10 max-w-lg">
-                        Understanding your Body Mass Index is the first step towards a tailored fitness regime. Use our
-                        elite calculator to benchmarks your current status.
-                    </p>
+            <div class="text-center mb-16 reveal-up">
+                <span class="text-accent font-sans text-xs uppercase tracking-[0.3em] font-bold mb-4 block">Interactive
+                    Wellness</span>
+                <h2 class="font-serif text-4xl md:text-5xl mb-6">The Wellness <span class="text-accent">Suite</span>
+                </h2>
+                <div class="flex justify-center gap-4 md:gap-8 mt-10">
+                    <button onclick="switchSuiteTab('bmi')" id="tab-bmi" class="suite-tab active">
+                        The Baseline
+                        <span class="block text-[9px] uppercase tracking-widest opacity-50 font-sans mt-1">BMI
+                            Calculator</span>
+                    </button>
+                    <button onclick="switchSuiteTab('recovery')" id="tab-recovery" class="suite-tab">
+                        The Protocol
+                        <span class="block text-[9px] uppercase tracking-widest opacity-50 font-sans mt-1">Recovery
+                            Generator</span>
+                    </button>
+                </div>
+            </div>
 
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <!-- Tool Container -->
+                <div class="reveal-up">
                     <div
                         class="bg-white/5 border border-white/10 p-8 md:p-12 backdrop-blur-xl relative overflow-hidden group">
-                        <!-- Unit Toggle -->
-                        <div class="flex gap-8 mb-10">
-                            <label class="flex items-center gap-3 cursor-pointer group/radio">
-                                <input type="radio" name="units" value="metric" checked class="hidden"
-                                    onchange="toggleUnits()">
-                                <div
-                                    class="w-5 h-5 border border-accent flex items-center justify-center rounded-full transition-all group-hover/radio:border-white">
-                                    <div class="w-2 h-2 bg-accent rounded-full scale-0 transition-transform dot"></div>
-                                </div>
-                                <span class="text-xs uppercase tracking-widest font-bold">Metric Units</span>
-                            </label>
-                            <label class="flex items-center gap-3 cursor-pointer group/radio">
-                                <input type="radio" name="units" value="imperial" class="hidden"
-                                    onchange="toggleUnits()">
-                                <div
-                                    class="w-5 h-5 border border-white/20 flex items-center justify-center rounded-full transition-all group-hover/radio:border-accent">
-                                    <div class="w-2 h-2 bg-accent rounded-full scale-0 transition-transform dot"></div>
-                                </div>
-                                <span class="text-xs uppercase tracking-widest font-bold text-white/50">Imperial
-                                    Units</span>
-                            </label>
-                        </div>
 
-                        <!-- Form Fields -->
-                        <div class="space-y-8">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="metricInputs">
-                                <div class="flex flex-col gap-3">
-                                    <label class="text-[10px] text-accent tracking-[0.2em] font-bold uppercase">Weight
-                                        (kg)</label>
-                                    <input type="number" id="weightMetric" placeholder="70"
-                                        class="bg-white/5 border border-white/10 px-6 py-4 text-sm font-medium focus:outline-none focus:border-accent transition-all text-white">
-                                </div>
-                                <div class="flex flex-col gap-3">
-                                    <label class="text-[10px] text-accent tracking-[0.2em] font-bold uppercase">Height
-                                        (cm)</label>
-                                    <input type="number" id="heightMetric" placeholder="175"
-                                        class="bg-white/5 border border-white/10 px-6 py-4 text-sm font-medium focus:outline-none focus:border-accent transition-all text-white">
-                                </div>
+                        <!-- BMI TAB CONTENT -->
+                        <div id="suite-bmi-content" class="suite-content">
+                            <h3 class="font-serif text-2xl mb-8">Measure Your Progress</h3>
+                            <!-- Unit Toggle -->
+                            <div class="flex gap-8 mb-10">
+                                <label class="flex items-center gap-3 cursor-pointer group/radio">
+                                    <input type="radio" name="units" value="metric" checked class="hidden"
+                                        onchange="toggleUnits()">
+                                    <div
+                                        class="w-5 h-5 border border-accent flex items-center justify-center rounded-full transition-all group-hover/radio:border-white">
+                                        <div class="w-2 h-2 bg-accent rounded-full scale-100 transition-transform dot">
+                                        </div>
+                                    </div>
+                                    <span class="text-xs uppercase tracking-widest font-bold">Metric Units</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group/radio">
+                                    <input type="radio" name="units" value="imperial" class="hidden"
+                                        onchange="toggleUnits()">
+                                    <div
+                                        class="w-5 h-5 border border-white/20 flex items-center justify-center rounded-full transition-all group-hover/radio:border-accent">
+                                        <div class="w-2 h-2 bg-accent rounded-full scale-0 transition-transform dot">
+                                        </div>
+                                    </div>
+                                    <span class="text-xs uppercase tracking-widest font-bold text-white/50">Imperial
+                                        Units</span>
+                                </label>
                             </div>
 
-                            <div class="grid grid-cols-3 gap-6 hidden" id="imperialInputs">
-                                <div class="flex flex-col gap-3">
-                                    <label
-                                        class="text-[10px] text-accent tracking-[0.2em] font-bold uppercase">Lbs</label>
-                                    <input type="number" id="weightImperial" placeholder="154"
-                                        class="bg-white/5 border border-white/10 px-4 py-4 text-sm font-medium focus:outline-none focus:border-accent transition-all text-white">
+                            <div class="space-y-8">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="metricInputs">
+                                    <div class="flex flex-col gap-3">
+                                        <label class="text-[10px] text-accent font-bold uppercase">Weight (kg)</label>
+                                        <input type="number" id="weightMetric" placeholder="70"
+                                            class="bg-white/5 border border-white/10 px-6 py-4 text-sm font-medium focus:outline-none focus:border-accent transition-all text-white">
+                                    </div>
+                                    <div class="flex flex-col gap-3">
+                                        <label class="text-[10px] text-accent font-bold uppercase">Height (cm)</label>
+                                        <input type="number" id="heightMetric" placeholder="175"
+                                            class="bg-white/5 border border-white/10 px-6 py-4 text-sm font-medium focus:outline-none focus:border-accent transition-all text-white">
+                                    </div>
                                 </div>
-                                <div class="flex flex-col gap-3">
-                                    <label
-                                        class="text-[10px] text-accent tracking-[0.2em] font-bold uppercase">Ft</label>
-                                    <input type="number" id="heightFt" placeholder="5"
-                                        class="bg-white/5 border border-white/10 px-4 py-4 text-sm font-medium focus:outline-none focus:border-accent transition-all text-white">
-                                </div>
-                                <div class="flex flex-col gap-3">
-                                    <label
-                                        class="text-[10px] text-accent tracking-[0.2em] font-bold uppercase">In</label>
-                                    <input type="number" id="heightIn" placeholder="9"
-                                        class="bg-white/5 border border-white/10 px-4 py-4 text-sm font-medium focus:outline-none focus:border-accent transition-all text-white">
-                                </div>
-                            </div>
 
-                            <button onclick="calculateBMI()"
-                                class="w-full bg-accent hover:bg-white text-black py-5 font-bold text-sm transition-all duration-500 shadow-xl group/btn overflow-hidden relative">
-                                <span class="relative z-10 uppercase tracking-[0.2em]">Calculate BMI</span>
-                            </button>
+                                <div class="grid grid-cols-3 gap-6 hidden" id="imperialInputs">
+                                    <div class="flex flex-col gap-3">
+                                        <label class="text-[10px] text-accent font-bold uppercase">Lbs</label>
+                                        <input type="number" id="weightImperial" placeholder="154"
+                                            class="bg-white/5 border border-white/10 px-4 py-4 text-sm font-medium focus:outline-none focus:border-accent transition-all text-white">
+                                    </div>
+                                    <div class="flex flex-col gap-3">
+                                        <label class="text-[10px] text-accent font-bold uppercase">Ft</label>
+                                        <input type="number" id="heightFt" placeholder="5"
+                                            class="bg-white/5 border border-white/10 px-4 py-4 text-sm font-medium focus:outline-none focus:border-accent transition-all text-white">
+                                    </div>
+                                    <div class="flex flex-col gap-3">
+                                        <label class="text-[10px] text-accent font-bold uppercase">In</label>
+                                        <input type="number" id="heightIn" placeholder="9"
+                                            class="bg-white/5 border border-white/10 px-4 py-4 text-sm font-medium focus:outline-none focus:border-accent transition-all text-white">
+                                    </div>
+                                </div>
+
+                                <button onclick="calculateBMI()"
+                                    class="w-full bg-accent hover:bg-white text-black py-5 font-bold text-sm transition-all duration-500 shadow-xl uppercase tracking-widest">
+                                    Calculate BMI
+                                </button>
+                            </div>
                         </div>
+
+                        <!-- RECOVERY TAB CONTENT -->
+                        <div id="suite-recovery-content" class="suite-content hidden">
+                            <h3 class="font-serif text-2xl mb-8">Optimize Your Recovery</h3>
+                            <div class="space-y-8">
+                                <div class="flex flex-col gap-3">
+                                    <label class="text-[10px] text-accent font-bold uppercase">Select Your
+                                        Activity</label>
+                                    <div class="relative">
+                                        <select id="recoveryActivity"
+                                            class="w-full bg-white/5 border border-white/10 px-6 py-4 text-sm font-medium focus:outline-none focus:border-accent transition-all text-white appearance-none cursor-pointer [&>option]:bg-navy">
+                                            <option value="padel" class="bg-navy">Padel Match</option>
+                                            <option value="strength" class="bg-navy">Strength Training</option>
+                                            <option value="swimming" class="bg-navy">Swimming Sessions</option>
+                                            <option value="lifestyle" class="bg-navy">Long Day/Office</option>
+                                        </select>
+                                        <div
+                                            class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-accent">
+                                            <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-3">
+                                    <label class="text-[10px] text-accent font-bold uppercase">Intensity Level</label>
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <label class="cursor-pointer group/int">
+                                            <input type="radio" name="intensity" value="low" class="hidden" checked>
+                                            <div
+                                                class="border border-white/10 py-3 text-center text-[10px] uppercase font-bold group-hover/int:border-accent transition-all int-btn active">
+                                                Subtle</div>
+                                        </label>
+                                        <label class="cursor-pointer group/int">
+                                            <input type="radio" name="intensity" value="medium" class="hidden">
+                                            <div
+                                                class="border border-white/10 py-3 text-center text-[10px] uppercase font-bold group-hover/int:border-accent transition-all int-btn">
+                                                Vibrant</div>
+                                        </label>
+                                        <label class="cursor-pointer group/int">
+                                            <input type="radio" name="intensity" value="high" class="hidden">
+                                            <div
+                                                class="border border-white/10 py-3 text-center text-[10px] uppercase font-bold group-hover/int:border-accent transition-all int-btn">
+                                                Extreme</div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <button onclick="generateProtocol()"
+                                    class="w-full bg-accent hover:bg-white text-black py-5 font-bold text-sm transition-all duration-500 shadow-xl uppercase tracking-widest">
+                                    Generate Protocol
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <!-- Results & Chart -->
+                <!-- Results Display -->
                 <div class="reveal-up" style="transition-delay: 200ms;">
+                    <!-- Result Card (BMI) -->
                     <div id="bmiResultCard" class="bg-accent p-12 mb-12 hidden">
                         <h4 class="text-black font-serif text-lg uppercase tracking-widest mb-2">Your BMI Result</h4>
                         <div class="text-black font-serif text-6xl mb-6" id="bmiValue">00.0</div>
@@ -349,31 +416,55 @@
                             Calculating...</p>
                     </div>
 
-                    <div class="bg-white/[0.03] border border-white/10 p-8 md:p-12 backdrop-blur-md">
-                        <h4 class="font-serif text-xl mb-8 uppercase tracking-widest border-b border-white/10 pb-4">
-                            Weight Status Chart</h4>
-                        <div class="space-y-4 font-sans text-sm">
-                            <div class="flex justify-between pb-3 border-b border-white/5">
-                                <span class="text-softGray">Below 18.5</span>
-                                <span class="font-bold">Underweight</span>
+                    <!-- Result Card (Recovery) -->
+                    <div id="recoveryResultCard" class="bg-accent p-10 mb-12 hidden text-black">
+                        <h4 class="font-serif text-lg uppercase tracking-widest mb-6 border-b border-black/10 pb-4">
+                            Personalized Protocol</h4>
+                        <div id="protocolSteps" class="space-y-6">
+                            <!-- Dynamic Steps -->
+                        </div>
+                    </div>
+
+                    <div id="suite-info-box"
+                        class="bg-white/[0.03] border border-white/10 p-8 md:p-12 backdrop-blur-md">
+                        <!-- BMI Info -->
+                        <div id="bmiInfoChart">
+                            <h4 class="font-serif text-xl mb-8 uppercase tracking-widest border-b border-white/10 pb-4">
+                                Weight Status Chart</h4>
+                            <div class="space-y-4 font-sans text-sm">
+                                <div class="flex justify-between pb-3 border-b border-white/5">
+                                    <span class="text-softGray">Below 18.5</span>
+                                    <span class="font-bold">Underweight</span>
+                                </div>
+                                <div class="flex justify-between pb-3 border-b border-white/5 text-accent">
+                                    <span>18.5 - 24.9</span>
+                                    <span class="font-bold">Normal Weight</span>
+                                </div>
+                                <div class="flex justify-between pb-3 border-b border-white/5">
+                                    <span class="text-softGray">25.0 - 29.9</span>
+                                    <span class="font-bold">Overweight</span>
+                                </div>
+                                <div class="flex justify-between pb-3 border-b border-white/5">
+                                    <span class="text-softGray">30.0 and Above</span>
+                                    <span class="font-bold text-brandRed">Obese</span>
+                                </div>
                             </div>
-                            <div class="flex justify-between pb-3 border-b border-white/5 text-accent">
-                                <span>18.5 - 24.9</span>
-                                <span class="font-bold">Normal Weight</span>
-                            </div>
-                            <div class="flex justify-between pb-3 border-b border-white/5">
-                                <span class="text-softGray">25.0 - 29.9</span>
-                                <span class="font-bold">Overweight</span>
-                            </div>
-                            <div class="flex justify-between pb-3 border-b border-white/5">
-                                <span class="text-softGray">30.0 and Above</span>
-                                <span class="font-bold text-brandRed">Obese</span>
-                            </div>
+                        </div>
+                        <!-- Recovery Info -->
+                        <div id="recoveryInfoChart" class="hidden">
+                            <h4 class="font-serif text-xl mb-8 uppercase tracking-widest border-b border-white/10 pb-4">
+                                Expert Tip</h4>
+                            <p class="text-softGray font-light leading-relaxed">
+                                Elite recovery is about contrast. Switching between our luxury sauna heat and controlled
+                                cooling stimulates blood flow and accelerates metabolic waste removal.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <div class="silver-divider"></div>
 
         <div class="silver-divider"></div>
 
@@ -868,28 +959,53 @@
             revealObserver.observe(el);
         });
 
-        // BMI Logic
+        // Wellness Suite Logic
+        function switchSuiteTab(tab) {
+            // Update Tab Buttons
+            document.querySelectorAll('.suite-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('tab-' + tab).classList.add('active');
+
+            // Toggle Contents
+            document.querySelectorAll('.suite-content').forEach(c => c.classList.add('hidden'));
+            document.getElementById('suite-' + tab + '-content').classList.remove('hidden');
+
+            // Reset Result Cards
+            document.getElementById('bmiResultCard').classList.add('hidden');
+            document.getElementById('recoveryResultCard').classList.add('hidden');
+
+            // Switch Info Boxes
+            if (tab === 'bmi') {
+                document.getElementById('bmiInfoChart').classList.remove('hidden');
+                document.getElementById('recoveryInfoChart').classList.add('hidden');
+            } else {
+                document.getElementById('bmiInfoChart').classList.add('hidden');
+                document.getElementById('recoveryInfoChart').classList.remove('hidden');
+            }
+        }
+
         function toggleUnits() {
             const units = document.querySelector('input[name="units"]:checked').value;
             const metricDiv = document.getElementById('metricInputs');
             const imperialDiv = document.getElementById('imperialInputs');
-            const radios = document.querySelectorAll('input[name="units"]');
+            const labels = document.querySelectorAll('input[name="units"]');
 
-            radios.forEach(r => {
-                const label = r.closest('label');
+            labels.forEach(radio => {
+                const label = radio.closest('label');
                 const dot = label.querySelector('.dot');
-                const circle = label.querySelector('div');
-                const text = label.querySelector('span');
+                const circ = label.querySelector('div');
+                const span = label.querySelector('span');
 
-                if (r.checked) {
-                    dot.style.transform = 'scale(1)';
-                    circle.style.borderColor = 'var(--accent)';
-                    text.style.color = 'white';
-                    text.style.opacity = '1';
+                if (radio.checked) {
+                    dot.classList.remove('scale-0');
+                    dot.classList.add('scale-100');
+                    circ.style.borderColor = "var(--accent)";
+                    span.style.color = "white";
+                    span.style.opacity = "1";
                 } else {
-                    dot.style.transform = 'scale(0)';
-                    circle.style.borderColor = 'rgba(255,255,255,0.2)';
-                    text.style.color = 'rgba(255,255,255,0.5)';
+                    dot.classList.add('scale-0');
+                    dot.classList.remove('scale-100');
+                    circ.style.borderColor = "rgba(255,255,255,0.2)";
+                    span.style.color = "rgba(255,255,255,0.5)";
                 }
             });
 
@@ -919,33 +1035,95 @@
             }
 
             if (bmi > 0) {
-                const resultCard = document.getElementById('bmiResultCard');
-                const bmiVal = document.getElementById('bmiValue');
-                const bmiCat = document.getElementById('bmiCategory');
+                const resCard = document.getElementById('bmiResultCard');
+                resCard.classList.remove('hidden');
+                document.getElementById('bmiValue').innerText = bmi.toFixed(1);
 
-                resultCard.classList.remove('hidden');
-                bmiVal.innerText = bmi.toFixed(1);
+                let cat = "";
+                if (bmi < 18.5) cat = "Underweight";
+                else if (bmi < 25) cat = "Normal Weight";
+                else if (bmi < 30) cat = "Overweight";
+                else cat = "Obese";
+                document.getElementById('bmiCategory').innerText = cat;
 
-                let category = "";
-                if (bmi < 18.5) category = "Underweight";
-                else if (bmi < 25) category = "Normal Weight";
-                else if (bmi < 30) category = "Overweight";
-                else category = "Obese";
-
-                bmiCat.innerText = category;
+                // Hide recovery result card if BMI is calculated
+                document.getElementById('recoveryResultCard').classList.add('hidden');
 
                 // Scroll to result on mobile
                 if (window.innerWidth < 768) {
-                    resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    resCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             } else {
                 alert("Please enter valid weight and height values.");
             }
         }
 
-        // Initialize UI
-        toggleUnits();
+        // Intensity Selector Styling
+        document.querySelectorAll('input[name="intensity"]').forEach(input => {
+            input.addEventListener('change', function () {
+                document.querySelectorAll('.int-btn').forEach(btn => btn.classList.remove('active'));
+                this.nextElementSibling.classList.add('active');
+            });
+        });
+
+        function generateProtocol() {
+            const activity = document.getElementById('recoveryActivity').value;
+            const intensity = document.querySelector('input[name="intensity"]:checked').value;
+            const stepsDiv = document.getElementById('protocolSteps');
+
+            let protocols = {
+                'padel': {
+                    'low': ['10m Gentle Steam', 'Hydration Focus', 'Relaxation Lounge'],
+                    'medium': ['15m Finnish Sauna', 'Cold Plunge Shower', '10m Relaxation'],
+                    'high': ['20m Sauna Cycle', 'Double Cold Contrast', '15m Deep Relaxation']
+                },
+                'strength': {
+                    'low': ['15m Warm Relaxation', 'Light Stretching', 'Magnesium Focus'],
+                    'medium': ['15m Sauna (Heat Stress)', 'Contrast Shower', '20m Post-Workout Hub'],
+                    'high': ['20m Intense Sauna', 'Post-Heat Steam 5m', 'Cold Shock Therapy']
+                },
+                'swimming': {
+                    'low': ['5m Steam (Skin Hydration)', 'Gentle Dry Off', 'Poolside Lounge'],
+                    'medium': ['10m Warm Sauna', 'Neutral Shower', '10m Relaxation'],
+                    'high': ['15m Dry Heat Sauna', 'Cold Shower Reset', 'Deep Body Relaxation']
+                },
+                'lifestyle': {
+                    'low': ['10m Steam Bliss', 'Relaxation Lounge', 'Aromatherapy Focus'],
+                    'medium': ['15m Sauna Detox', 'Neutral Shower', 'Luxury Lounge Hub'],
+                    'high': ['20m Full Heat Detox', 'Cool Water Reset', 'Deep Recovery Protocol']
+                }
+            };
+
+            const steps = protocols[activity][intensity];
+            stepsDiv.innerHTML = '';
+
+            steps.forEach((step, index) => {
+                const stepEl = document.createElement('div');
+                stepEl.className = 'flex items-center gap-4 border-b border-black/10 pb-4';
+                stepEl.innerHTML = `
+                    <span class="w-8 h-8 rounded-full border border-black/40 flex items-center justify-center text-xs font-bold">0${index + 1}</span>
+                    <span class="font-sans font-medium tracking-wide uppercase text-xs">${step}</span>
+                `;
+                stepsDiv.appendChild(stepEl);
+            });
+
+            document.getElementById('recoveryResultCard').classList.remove('hidden');
+            // Hide BMI result card if recovery protocol is generated
+            document.getElementById('bmiResultCard').classList.add('hidden');
+
+            // Scroll to result on mobile
+            if (window.innerWidth < 768) {
+                document.getElementById('recoveryResultCard').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // Initialize Suite
+        window.addEventListener('DOMContentLoaded', () => {
+            toggleUnits(); // Initialize BMI unit radio button styling
+            switchSuiteTab('bmi'); // Set BMI tab as active by default
+        });
     </script>
 </body>
 
 </html>
+```
